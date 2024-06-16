@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Tech Stack Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+The technology stack of Liplum Dev.
 
 ## Getting Started
 
