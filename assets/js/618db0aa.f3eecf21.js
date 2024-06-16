@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkliplum_dev_tech_stack=self.webpackChunkliplum_dev_tech_stack||[]).push([[7820],{4856:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/tech-stack/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
