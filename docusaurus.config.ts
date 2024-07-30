@@ -3,8 +3,8 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Plum Tech Stack',
+  tagline: 'The tech stack that Plum Technology uses.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -39,15 +39,13 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/liplum-dev/tech-stack',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/liplum-dev/tech-stack',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -60,7 +58,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Tech Stack',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -93,19 +91,11 @@ const config: Config = {
           ],
         },
         {
-          title: 'Community',
+          title: 'Help',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Plum Technology',
+              href: 'https://liplum.net',
             },
           ],
         },
@@ -118,12 +108,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/liplum-dev',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © 2024 Plum Technology. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
