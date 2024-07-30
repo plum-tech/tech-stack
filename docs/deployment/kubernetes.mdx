@@ -29,7 +29,7 @@ etcd cluster externally or on custom ports.
 On Ubuntu, you should configure the `ufw`(Ubuntu firewall) to allow the ports.
 
 ```bash
-sudo ufw allow 6443/tcp, 2379:2380/tcp, 10250/tcp, 10259/tcp, 10257/tcp
+for p in "6443/tcp" "2379:2380/tcp" "10250/tcp" "10259/tcp" "10257/tcp"; do sudo ufw allow "$p"; done
 ```
 
 
@@ -48,7 +48,7 @@ ports need to be open instead of defaults mentioned here.
 
 On Ubuntu, you should configure the `ufw`(Ubuntu firewall) to allow the ports.
 ```bash
-sudo ufw allow 10250/tcp, 10256/tcp, 30000:32767/tcp
+for p in "10250/tcp" "10256/tcp" "30000:32767/tcp"; do sudo ufw allow "$p"; done
 ```
 
 One common example is API server port that is sometimes switched
