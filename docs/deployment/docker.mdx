@@ -4,3 +4,25 @@ sidebar_position: 1
 
 # Docker
 
+
+## Registry Mirrors
+
+If you live in mainland China, you may face network issues about the connectivity to the [official Docker registry](https://hub.docker.com/).
+
+
+You can configure the registry mirrors settings of Docker.
+
+For example, Tencent cloud Docker registry mirror: https://mirror.ccs.tencentyun.com.
+
+
+On Linux, run the code below to edit `/etc/docker/daemon.json` and copy paste the following content.
+
+```json
+{
+   "registry-mirrors": [
+   "https://mirror.ccs.tencentyun.com"
+  ]
+}
+```
+
+Note: If you face permission issues, edit the file with `sudo`.
