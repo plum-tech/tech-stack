@@ -1,0 +1,89 @@
+---
+sidebar_position: 1
+---
+
+# Clash
+
+## Docker
+
+Docker image: https://hub.docker.com/r/dreamacro/clash
+
+Create a new folder, and write a `docker-compose.yaml` with the following content.
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="POSIX" label="POSIX" default>
+    
+```yaml title="docker-compose.yaml"
+services:
+  clash:
+    image: dreamacro/clash
+    container_name: clash
+    volumes:
+      - ./config.yaml:/root/.config/clash/config.yaml
+      # - ./ui:/ui # dashboard volume
+    restart: unless-stopped
+    network_mode: "host"
+```
+
+  </TabItem>
+  <TabItem value="Windows" label="Windows">
+
+```yaml title="docker-compose.yaml"
+services:
+  clash:
+    image: dreamacro/clash
+    container_name: clash
+    volumes:
+      - ./config.yaml:/root/.config/clash/config.yaml
+      # - ./ui:/ui # dashboard volume
+    ports:
+      - "7890:7890"
+      - "7891:7891"
+      # - "8080:8080" # external controller (Restful API)
+    # TUN
+    # cap_add:
+    #   - NET_ADMIN
+    # devices:
+    #   - /dev/net/tun
+    restart: unless-stopped
+    network_mode: "bridge"
+```
+
+  </TabItem>
+</Tabs>
+
+Then put the `config.yaml` under the same folder.
+
+Run the following command to start the Clash.
+```bash
+docker compose up --detach
+```
+
+Run the following command to stop the Clash.
+```bash
+docker compose down
+```
+
+Now export following environment variables.
+```bash
+export http_proxy="http://localhost:7890"
+export https_proxy="http://localhost:7890"
+export all_proxy="socks5://127.0.0.1:7891"
+```
+
+You can append the commands above to the bashrc file.
+
+For all users:
+```bash
+sudo nano /etc/bash.bashrc
+source /etc/bash.bashrc
+```
+
+For current user:
+```bash
+sudo nano ~/.bashrc
+source ~/.bashrc
+```
