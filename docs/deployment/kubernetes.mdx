@@ -6,7 +6,14 @@ sidebar_position: 2
 
 ## Installation
 
+### Install kubeadm
+Reference: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+
+
 ### Required ports
+
+Reference: https://kubernetes.io/docs/reference/networking/ports-and-protocols/
 
 When running Kubernetes in an environment with strict network boundaries, such 
 as on-premises datacenter with physical network firewalls or Virtual 
@@ -39,7 +46,7 @@ for p in "6443/tcp" "2379:2380/tcp" "10250/tcp" "10259/tcp" "10257/tcp"; do sudo
 |----------|-----------|-------------|-----------------------|-------------------------|
 | TCP      | Inbound   | 10250       | Kubelet API           | Self, Control plane     |
 | TCP      | Inbound   | 10256       | kube-proxy            | Self, Load balancers    |
-| TCP      | Inbound   | 30000-32767 | NodePort Services†    | All                     |
+| TCP      | Inbound   | 30000-32767 | NodePort Services     | All                     |
 
 † Default port range for [NodePort Services](https://kubernetes.io/docs/concepts/services-networking/service/).
 
