@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 ---
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem';
 
 # Docker
 
@@ -12,11 +14,14 @@ If you live in mainland China, you may face network issues about the connectivit
 
 You can configure the registry mirrors settings of Docker.
 
-For example, Tencent cloud Docker registry mirror: https://mirror.ccs.tencentyun.com.
-
-
 On Linux, run the code below to edit `/etc/docker/daemon.json` and copy paste the following content.
+Note: If you face permission issues, edit the file with `sudo`.
 
+
+<Tabs>
+  <TabItem value="Tencent Cloud" label="Tencent Cloud" default>
+
+For example, Tencent cloud Docker registry mirror: https://mirror.ccs.tencentyun.com.
 ```json
 {
    "registry-mirrors": [
@@ -25,4 +30,27 @@ On Linux, run the code below to edit `/etc/docker/daemon.json` and copy paste th
 }
 ```
 
-Note: If you face permission issues, edit the file with `sudo`.
+  </TabItem>
+</Tabs>
+
+
+Then restart the Docker service.
+```bash
+sudo systemctl restart docker
+```
+
+Finally, check the mirrors settings are configured by the following comamnd.
+```bash
+sudo docker info
+```
+
+It should output `Registry Mirrors` block like this.
+```yaml
+Insecure Registries:
+ 127.0.0.0/8
+// highlight-start
+Registry Mirrors:
+ https://docker-mirrors.example.com/
+// highlight-end
+Live Restore Enabled: false
+```
