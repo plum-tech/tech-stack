@@ -118,7 +118,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ["java", "yaml", "bash"],
+      additionalLanguages: ["java", "yaml", "bash", "json"],
     },
   } satisfies Preset.ThemeConfig,
 };
