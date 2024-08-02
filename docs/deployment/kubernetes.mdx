@@ -4,11 +4,12 @@ sidebar_position: 2
 
 # Kubernetes
 
-## Installation
+## Self-hosted Kubernetes
+
+Following this [handbook](https://www.karsonjo.com/deploy-a-self-hosted-kubernetes/) in Chinese.
 
 ### Install kubeadm
 Reference: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
-
 
 
 ### Required ports
@@ -20,7 +21,7 @@ as on-premises datacenter with physical network firewalls or Virtual
 Networks in Public Cloud, it is useful to be aware of the ports and protocols 
 used by Kubernetes components.
 
-#### Control plane (Master)
+### Control plane (Master)
 
 | Protocol | Direction | Port Range | Purpose                 | Used By                   |
 |----------|-----------|------------|-------------------------|---------------------------|
@@ -40,7 +41,7 @@ for p in "6443/tcp" "2379:2380/tcp" "10250/tcp" "10259/tcp" "10257/tcp"; do sudo
 ```
 
 
-#### Worker node(s)
+### Worker node(s)
 
 | Protocol | Direction | Port Range  | Purpose               | Used By                 |
 |----------|-----------|-------------|-----------------------|-------------------------|
