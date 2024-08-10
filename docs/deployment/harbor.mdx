@@ -1,0 +1,28 @@
+---
+sidebar_position: 2
+---
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# [Harbor](https://goharbor.io/)
+
+## Setup
+
+Documentation: https://goharbor.io/docs/2.11.0/install-config/
+
+First, download the latest version from the [GitHub release page](https://github.com/goharbor/harbor/releases/latest).
+
+The offline installer is recommended, in case the server cannot access the download source.
+
+Replace the `<version>` with the actual version you downloaded.
+```bash
+tar xzvf harbor-offline-installer-<version>.tgz
+```
+Unzipping results in a `harbor` folder with the following contents:
+```
+harbor/
+├─ common.sh
+├─ harbor.yml.tmpl
+├─ prepare
+├─ install.sh
+```
