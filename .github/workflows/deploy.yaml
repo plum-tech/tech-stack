@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
           
       - uses: pnpm/action-setup@v4
         with:
           version: 8
+          
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -23,6 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
       - name: Build website
         run: pnpm build
 
