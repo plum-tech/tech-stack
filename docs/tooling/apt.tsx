@@ -1,4 +1,3 @@
-import { Select, VStack, Card, HStack, StackDivider, Switch, FormLabel, FormControl } from '@chakra-ui/react'
 import { useState } from "react"
 
 type SelectorValue = string | number
@@ -12,9 +11,9 @@ const Selector = ({ title, value, setValue, options }: {
   setValue: (v: SelectorValue) => void
   options: SelectorOption[]
 }) => {
-  return <FormControl  alignItems='center'>
-    <FormLabel>{title}</FormLabel>
-    <Select
+  return <div>
+    <span>{title}</span>
+    <select
       defaultValue={value}
       onChange={(e) => {
         setValue(e.target.value)
@@ -25,8 +24,8 @@ const Selector = ({ title, value, setValue, options }: {
           {option.label}
         </option>
       })}
-    </Select>
-  </FormControl>
+    </select>
+  </div>
 }
 
 export const TencentCloudSourceWithSelector = ({ builder }) => {
@@ -34,9 +33,8 @@ export const TencentCloudSourceWithSelector = ({ builder }) => {
   const [version, setVersion] = useState("jammy");
   const [withSource, setWithSource] = useState(false);
   return <>
-    <Card style={{ padding: "20px", }}>
-      <VStack spacing="8px" align='stretch'
-        divider={<StackDivider borderColor='gray.200' />} >
+    <div style={{ padding: "20px", }}>
+      <div  >
         <Selector
           title='Network type'
           value={net}
@@ -53,16 +51,16 @@ export const TencentCloudSourceWithSelector = ({ builder }) => {
             { value: 'jammy', label: 'jammy' },
             { value: 'focal', label: 'focal' },
           ]} />
-        <FormControl display='flex' alignItems='center'>
-          <FormLabel htmlFor='email-alerts' mb='0'>
+        <div>
+          <span>
             With source
-          </FormLabel>
-          <Switch value={withSource} onChange={(e) => {
+          </span>
+          <input type="checkbox" role="switch" value={withSource} onChange={(e) => {
             setWithSource(e.target.checked)
           }} />
-        </FormControl>
-      </VStack>
-    </Card >
+        </div>
+      </div>
+    </div >
     {builder({ net, version, withSource })}
   </>
 }

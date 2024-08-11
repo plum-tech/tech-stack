@@ -1,11 +1,12 @@
-import React from "react";
-import { ChakraProvider } from "@chakra-ui/react";
+import React from "react"
+import bootstrap from 'bootstrap'
 
 // Default implementation, that you can customize
-export default function Root({children}) {
+export default function Root({ children }) {
   return (
-    <ChakraProvider>
+    <>
+      <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
       {children}
-    </ChakraProvider>
-  );
+    </>
+  )
 }
