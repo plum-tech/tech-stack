@@ -15,12 +15,12 @@ consider using a mirror source.
 
 <Tabs>
   <TabItem value="Tencent Cloud" label="Tencent Cloud" default>
-<TencentCloudSourceWithSelector builder={()=>{
+<TencentCloudSourceWithSelector builder={({net,version,withSource})=>{
   return <CodeBlock
         language="bash"
         title="/etc/apt/sources.list"
         showLineNumbers>
-        {buildTencentCloudSource({})}
+        {buildTencentCloudSource({net,version,withSource})}
       </CodeBlock>
 }}/>
   </TabItem>

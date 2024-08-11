@@ -1,35 +1,79 @@
-import Select from 'react-select'
+import { Select, VStack, Card, HStack, StackDivider, Switch, FormLabel, FormControl } from '@chakra-ui/react'
 import { useState } from "react"
 
-const options = [
-  { value: 'LAN', label: 'LAN' },
-  { value: 'WAN', label: 'WAN' },
-
-];
-
-export function TencentCloudSourceSelector() {
-  const [selectedOption, setSelectedOption] = useState("LAN");
-  return <Select
-    defaultValue={selectedOption}
-    onChange={setSelectedOption}
-    options={options}
-  />
+type SelectorValue = string | number
+interface SelectorOption {
+  value: SelectorValue
+  label: React.ReactNode
+}
+const Selector = ({ title, value, setValue, options }: {
+  title: React.ReactNode
+  value: SelectorValue
+  setValue: (v: SelectorValue) => void
+  options: SelectorOption[]
+}) => {
+  return <FormControl  alignItems='center'>
+    <FormLabel>{title}</FormLabel>
+    <Select
+      defaultValue={value}
+      onChange={(e) => {
+        setValue(e.target.value)
+      }}
+    >
+      {options.map(option => {
+        return <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      })}
+    </Select>
+  </FormControl>
 }
 
-export function TencentCloudSourceWithSelector({ builder }) {
+export const TencentCloudSourceWithSelector = ({ builder }) => {
+  const [net, setNet] = useState("LAN");
+  const [version, setVersion] = useState("jammy");
+  const [withSource, setWithSource] = useState(false);
   return <>
-    <TencentCloudSourceSelector />
-    {builder()}
+    <Card style={{ padding: "20px", }}>
+      <VStack spacing="8px" align='stretch'
+        divider={<StackDivider borderColor='gray.200' />} >
+        <Selector
+          title='Network type'
+          value={net}
+          setValue={setNet}
+          options={[
+            { value: 'LAN', label: 'LAN' },
+            { value: 'WAN', label: 'WAN' },
+          ]} />
+        <Selector
+          title='Ubuntu version'
+          value={version}
+          setValue={setVersion}
+          options={[
+            { value: 'jammy', label: 'jammy' },
+            { value: 'focal', label: 'focal' },
+          ]} />
+        <FormControl display='flex' alignItems='center'>
+          <FormLabel htmlFor='email-alerts' mb='0'>
+            With source
+          </FormLabel>
+          <Switch value={withSource} onChange={(e) => {
+            setWithSource(e.target.checked)
+          }} />
+        </FormControl>
+      </VStack>
+    </Card >
+    {builder({ net, version, withSource })}
   </>
 }
 
-export function buildTencentCloudSource({
+export const buildTencentCloudSource = ({
   net, version, withSource
 }: {
   net?: "LAN" | "WAN"
   version?: "jammy" | "focal"
   withSource?: boolean
-}) {
+}) => {
   const base = net == "LAN"
     ? "http://mirrors.tencentyun.com" // LAN
     : "http://mirrors.tencent.com" // WAN

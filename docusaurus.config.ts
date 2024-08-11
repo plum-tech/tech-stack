@@ -39,13 +39,13 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/liplum-dev/tech-stack',
+          editUrl: 'https://github.com/liplum-dev/tech-stack/tree/master',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/liplum-dev/tech-stack',
+          editUrl: 'https://github.com/liplum-dev/tech-stack/tree/master',
         },
         theme: {
           customCss: './src/css/custom.css',
