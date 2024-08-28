@@ -13,8 +13,8 @@ Docker Hub: https://hub.docker.com
 
 ## Installation
 
-<Tabs>
-  <TabItem value="Ubuntu" label="Ubuntu" default>
+### Unbuntu installation
+
 
 See https://docs.docker.com/engine/install/ubuntu
 
@@ -48,9 +48,37 @@ systemctl status docker
 docker info
 ```
 
-  </TabItem>
-</Tabs>
+### Windows installation
 
+#### Enable CPU Virtualization
+First, ensure your PC enable the `CPU Virtualization` in the BIOS.
+
+
+#### Install Hyper-V
+
+If you are using Windows 10/11 Home. You have to install the Hyper-V manaully.
+
+Create a file, named "Hyper-V-Enable.bat", then run it as administrator.
+
+:::warning
+
+Running scripts as administrator from untrusted source would damage your computer.
+
+We don't endorse this script.
+
+:::
+
+```sh title="Hyper-V-Enable.bat"
+Pushd "%~dp0"
+dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
+for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+del hyper-v.txt
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL
+```
+
+Then restart your PC.
+
+#### Install Docker Desktop
 
 
 ## Registry Mirrors
