@@ -33,3 +33,44 @@ harbor/
 
 Rename `harbor.yml.tmpl` to `harbor.yaml`.
 
+If you host the harbor behind nginx, you should only config the `http`.
+And set the `external_url` to your endpoint.
+```yml
+http:
+  port: 8080
+
+external_url: https://your.example.com
+```
+
+```nginx
+server {
+  listen 80;
+  server_name your.example.com;
+
+  location / {
+    return 301 https://$host$request_uri;
+  }
+}
+
+server {
+  listen 443 ssl;
+  server_name your.example.com;
+
+  ssl_certificate /certs/your.example.com/public.crt;
+  ssl_certificate_key /certs/your.example.com/private.key;
+
+  client_max_body_size 0;
+  chunked_transfer_encoding on;
+
+  location / {
+    proxy_pass http://localhost:8080;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    proxy_buffering off;
+    proxy_request_buffering off;
+  }
+}
+```
